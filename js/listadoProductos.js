@@ -99,5 +99,25 @@ fetch("https://fakestoreapi.com/products/category/women's clothing")
     });
   });
 });
+const botonFiltrar = document.getElementById('filterButton');
+const inputFitro = document.getElementById('searchInput');
 
-
+botonFiltrar.addEventListener('click', () => {
+    fetch('https://fakestoreapi.com/products')
+    .then(res => res.json())
+    .then(products => {
+        const productList = document.getElementById('productContainer');
+        productList.innerHTML = '';
+        products.forEach(inputFiltro => {
+        const productElement = document.createElement('div');
+        productElement.innerHTML = `
+            <h3>${inputFiltro.title}</h3>
+            <img src="${inputFiltro.image}" alt="${inputFiltro.title}" width="200">
+            <p>Precio: $${inputFiltro.price}</p>
+            <p>${inputFiltro.description}</p>
+            <button class="añadirCarrito">añadir</button>
+        `;
+        productList.appendChild(productElement);
+        });
+    });
+});
