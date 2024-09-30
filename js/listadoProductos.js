@@ -116,6 +116,7 @@ botonFiltrar.addEventListener('click', () => {
             <p>Precio: $${inputFiltro.price}</p>
             <p>${inputFiltro.description}</p>
             <button id="añadirCarrito">Añadir al carrito</button>
+
         `;
         productList.appendChild(productElement);
         });
